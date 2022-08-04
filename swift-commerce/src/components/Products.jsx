@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   const [data, setData] = useState([]);
@@ -46,17 +47,23 @@ const Products = () => {
     );
   };
 
+  //filter products by name selected 
+  const filterProduct = (name) => {
+    const newList = data.filter((item)=> item.category === name);
+    setFilter(newList)
+  }
+
   const ShowProducts = () => {
     return (
       <>
         <div className="buttons d-flex justify-content-center mb-5 pb-5">
-          <button className="btn btn-outline-dark me-2">All</button>
-          <button className="btn btn-outline-dark me-2">Men's Clothing</button>
-          <button className="btn btn-outline-dark me-2">
+          <button className="btn btn-outline-dark me-2" onClick={()=> setFilter(data)}>All</button>
+          <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("men's clothing")}>Men's Clothing</button>
+          <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("women's clothing")}>
             Women's Clothing
           </button>
-          <button className="btn btn-outline-dark me-2">Jewellery</button>
-          <button className="btn btn-outline-dark me-2">Electronic</button>
+          <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("jewelery")}>Jewelery</button>
+          <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("electronics")}>Electronic</button>
         </div>
         {filter.map((product) => {
           return (
@@ -74,9 +81,9 @@ const Products = () => {
                       {product.title.substring(0, 12)}...
                     </h5>
                     <p class="card-text lead fw-bold">${product.price}</p>
-                    <a href="ht" class="btn btn-outline-dark">
+                    <Link to={`/products/${product.id}`} class="btn btn-outline-dark">
                       Buy Now
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
