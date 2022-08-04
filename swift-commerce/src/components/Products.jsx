@@ -7,7 +7,7 @@ const Products = () => {
   const [loading, setLoading] = useState(false);
   let componentMounted = true;
 
-  //fetch product with fetch api. Set Filter to match data. 
+  //fetch product with fetch api. Set Filter to match data.
   //Adjust loading state to render skeleton component if true
   useEffect(() => {
     const getProducts = async () => {
@@ -29,20 +29,20 @@ const Products = () => {
   //Check state of loading, Adjust loading state to render skeleton component if true
   const Loading = () => {
     return (
-    <>
+      <>
         <div className="col-md-3">
-            <Skeleton height={350}/>
+          <Skeleton height={350} />
         </div>
         <div className="col-md-3">
-            <Skeleton height={350}/>
+          <Skeleton height={350} />
         </div>
         <div className="col-md-3">
-            <Skeleton height={350}/>
+          <Skeleton height={350} />
         </div>
         <div className="col-md-3">
-            <Skeleton height={350}/>
+          <Skeleton height={350} />
         </div>
-    </>
+      </>
     );
   };
 
@@ -63,14 +63,19 @@ const Products = () => {
             <>
               <div className="col-md-3 mb-4">
                 <div class="card h-100 w-100 text-center p-4" key={product.id}>
-                  <img src={product.image} class="card-img-top" alt={product.title} height='200px'/>
+                  <img
+                    src={product.image}
+                    class="card-img-top"
+                    alt={product.title}
+                    height="200px"
+                  />
                   <div class="card-body">
-                    <h5 class="card-title mb-0">{product.title.substring(0,12)}...</h5>
-                    <p class="card-text lead fw-bold">
-                      ${product.price}
-                    </p>
+                    <h5 class="card-title mb-0">
+                      {product.title.substring(0, 12)}...
+                    </h5>
+                    <p class="card-text lead fw-bold">${product.price}</p>
                     <a href="ht" class="btn btn-outline-dark">
-                       Buy Now
+                      Buy Now
                     </a>
                   </div>
                 </div>
