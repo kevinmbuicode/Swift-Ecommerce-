@@ -81,6 +81,8 @@ const Products = () => {
                       {product.title.substring(0, 12)}...
                     </h5>
                     <p class="card-text lead fw-bold">${product.price}</p>
+
+                    {/* Set path to productView page with product id captured onClick. Add route to productView page*/}
                     <Link to={`/products/${product.id}`} class="btn btn-outline-dark">
                       Buy Now
                     </Link>
