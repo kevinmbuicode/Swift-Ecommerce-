@@ -5,6 +5,7 @@ import Products from './components/Products'
 //Routes
 import { Routes, Route } from 'react-router-dom';
 import Product from './components/ProductView';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/products' element={<Products/>}/>
-        {/* Set path to productView page with product element design ready to render*/}
         <Route path='/products/:id' element={<Product/>}/>
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
     </>
   );
