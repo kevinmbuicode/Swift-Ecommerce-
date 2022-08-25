@@ -51,6 +51,7 @@ const Product = () => {
                     </h4>
                     <h1 className='display-5'>{product.title}</h1>
                     <p className='lead'>
+                    
                     {/* Check if product.rating is true(exits in the product), render the rate*/}
                         Rating {product.rating && product.rating.rate}
                         <i className='fa fa-star'></i>
