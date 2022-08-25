@@ -1,10 +1,24 @@
-import React from "react";
+import { Box, Button, Modal, Typography } from "@mui/material";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartState } from "../ContextAPI";
+import SignIn from "./SignIn";
 
 const NavBar = () => {
-
+  const [open, setOpen] = useState(false)
   const { count } = CartState();
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm">
@@ -46,19 +60,34 @@ const NavBar = () => {
               </Link>
             </li>
           </ul>
-          <div className="buttons">
-            <Link to='/login' className="btn btn-outline-dark">
+          <div className="buttons ms-2">
+            <Button
+              variant="contained"
+              color="error"
+              className="ms-2"
+              onClick={()=> setOpen(true)}
+            >
               <i className="fa fa-sign-in me-1"></i> Login
-            </Link>
-            <Link to='/register' className="btn btn-outline-dark ms-2">
+            </Button>
+            <Button variant="contained" color="error" className="ms-2">
               <i className="fa fa-user-plus me-1"></i> Register
-            </Link>
-            <Link to='/cart' className="btn btn-outline-dark ms-2">
+            </Button>
+            <Link to="/cart" className="btn btn-outline-dark ms-2">
               <i className="fa fa-shopping-cart me-1"></i> Cart ({count})
             </Link>
           </div>
         </div>
       </div>
+      <Modal
+        open={open}
+        onClose={()=> setOpen(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <SignIn/>
+        </Box>
+      </Modal>
     </nav>
   );
 };
