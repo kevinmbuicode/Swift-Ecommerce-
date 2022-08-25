@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { CartState } from "../ContextAPI";
 
 const NavBar = () => {
+
+  const { count } = CartState();
+
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm">
       <div className="container">
@@ -50,7 +54,7 @@ const NavBar = () => {
               <i className="fa fa-user-plus me-1"></i> Register
             </Link>
             <Link to='/cart' className="btn btn-outline-dark ms-2">
-              <i className="fa fa-shopping-cart me-1"></i> Cart (0)
+              <i className="fa fa-shopping-cart me-1"></i> Cart ({count})
             </Link>
           </div>
         </div>
