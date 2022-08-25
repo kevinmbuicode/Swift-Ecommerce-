@@ -1,4 +1,4 @@
-import { Box, Button, Modal, Typography } from "@mui/material";
+import { Box, Button, Drawer, Modal } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartState } from "../ContextAPI";
@@ -6,6 +6,7 @@ import SignIn from "./SignIn";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false)
+  const [ drawer, setDrawer] = useState(false)
   const { count } = CartState();
 
   const style = {
@@ -49,7 +50,7 @@ const NavBar = () => {
                 Products
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link" to="/about">
                 About
               </Link>
@@ -58,7 +59,7 @@ const NavBar = () => {
               <Link className="nav-link" to="/contact">
                 Contact
               </Link>
-            </li>
+            </li> */}
           </ul>
           <div className="buttons ms-2">
             <Button
@@ -72,9 +73,9 @@ const NavBar = () => {
             <Button variant="contained" color="error" className="ms-2">
               <i className="fa fa-user-plus me-1"></i> Register
             </Button>
-            <Link to="/cart" className="btn btn-outline-dark ms-2">
+            <Button variant="contained" onClick={()=> setDrawer(true)} className="ms-2">
               <i className="fa fa-shopping-cart me-1"></i> Cart ({count})
-            </Link>
+            </Button>
           </div>
         </div>
       </div>
@@ -88,6 +89,15 @@ const NavBar = () => {
           <SignIn/>
         </Box>
       </Modal>
+      <Drawer
+      open={drawer}
+      onClose={()=> setDrawer(false)}
+    >
+      Drawer List
+      Drawer List
+      Drawer List
+      Drawer List
+    </Drawer>
     </nav>
   );
 };

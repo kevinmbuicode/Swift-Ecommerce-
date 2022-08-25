@@ -1,6 +1,7 @@
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const [data, setData] = useState([]);
@@ -18,7 +19,6 @@ const Products = () => {
         setData(await response.clone().json());
         setFilter(await response.json());
         setLoading(false);
-        console.log(filter);
       }
       return () => {
         componentMounted = false;
@@ -47,48 +47,80 @@ const Products = () => {
     );
   };
 
-  //filter products by name selected 
+  //filter products by name selected
   const filterProduct = (name) => {
-    const newList = data.filter((item)=> item.category === name);
-    setFilter(newList)
-  }
+    const newList = data.filter((item) => item.category === name);
+    setFilter(newList);
+  };
 
   const ShowProducts = () => {
     return (
       <>
         <div className="buttons d-flex justify-content-center mb-5 pb-5">
-          <button className="btn btn-outline-dark me-2" onClick={()=> setFilter(data)}>All</button>
-          <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("men's clothing")}>Men's Clothing</button>
-          <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("women's clothing")}>
+          <Button
+            variant="contained"
+            color="error"
+            className="me-2"
+            onClick={() => setFilter(data)}
+          >
+            All
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            className="me-2"
+            onClick={() => filterProduct("men's clothing")}
+          >
+            Men's Clothing
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            className="me-2"
+            onClick={() => filterProduct("women's clothing")}
+          >
             Women's Clothing
-          </button>
-          <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("jewelery")}>Jewelery</button>
-          <button className="btn btn-outline-dark me-2" onClick={()=>filterProduct("electronics")}>Electronic</button>
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            className="me-2"
+            onClick={() => filterProduct("jewelery")}
+          >
+            Jewelery
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            className="me-2"
+            onClick={() => filterProduct("electronics")}
+          >
+            Electronic
+          </Button>
         </div>
         {filter.map((product) => {
           return (
             <>
-              <div className="col-md-3 mb-4">
-                <div class="card h-100 w-100 text-center p-4" key={product.id}>
-                  <img
-                    src={product.image}
-                    class="card-img-top"
-                    alt={product.title}
-                    height="200px"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title mb-0">
-                      {product.title.substring(0, 12)}...
-                    </h5>
-                    <p class="card-text lead fw-bold">${product.price}</p>
-
-                    {/* Set path to productView page with product id captured onClick. Add route to productView page*/}
-                    <Link to={`/products/${product.id}`} class="btn btn-outline-dark">
-                      Buy Now
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <Card sx={{ maxWidth: 345, margin: 5 }}>
+                <CardMedia
+                  component="img"
+                  height="400"
+                  image={product.image}
+                  alt={product.title}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {product.title.substring(0, 20)}...
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {product.description.substring(0, 100)}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button variant="contained" color="error" size="small">${product.price}</Button>
+                  <Button variant="contained" color="error" size="small">View</Button>
+                </CardActions>
+              </Card>
             </>
           );
         })}
