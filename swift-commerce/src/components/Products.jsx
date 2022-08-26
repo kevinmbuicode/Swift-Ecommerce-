@@ -118,7 +118,7 @@ const Products = () => {
                 </CardContent>
                 <CardActions>
                   <Button variant="contained" color="error" size="small">${product.price}</Button>
-                  <Button variant="contained" color="error" size="small">View</Button>
+                  <Link to={`/products/${product.id}`}><Button variant="contained" color="primary" size="small">View</Button></Link>
                 </CardActions>
               </Card>
             </>

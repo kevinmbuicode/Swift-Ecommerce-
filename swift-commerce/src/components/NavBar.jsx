@@ -1,22 +1,31 @@
-import { Box, Button, Drawer, Modal } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Drawer,
+  Modal,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartState } from "../ContextAPI";
 import SignIn from "./SignIn";
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false)
-  const [ drawer, setDrawer] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [drawer, setDrawer] = useState(false);
   const { count } = CartState();
 
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "background.paper",
+    border: "2px solid #000",
     boxShadow: 24,
     p: 4,
   };
@@ -50,30 +59,24 @@ const NavBar = () => {
                 Products
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contact
-              </Link>
-            </li> */}
           </ul>
           <div className="buttons ms-2">
             <Button
               variant="contained"
               color="error"
               className="ms-2"
-              onClick={()=> setOpen(true)}
+              onClick={() => setOpen(true)}
             >
               <i className="fa fa-sign-in me-1"></i> Login
             </Button>
             <Button variant="contained" color="error" className="ms-2">
               <i className="fa fa-user-plus me-1"></i> Register
             </Button>
-            <Button variant="contained" onClick={()=> setDrawer(true)} className="ms-2">
+            <Button
+              variant="contained"
+              onClick={() => setDrawer(true)}
+              className="ms-2"
+            >
               <i className="fa fa-shopping-cart me-1"></i> Cart ({count})
             </Button>
           </div>
@@ -81,23 +84,38 @@ const NavBar = () => {
       </div>
       <Modal
         open={open}
-        onClose={()=> setOpen(false)}
+        onClose={() => setOpen(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <SignIn/>
+          <SignIn />
         </Box>
       </Modal>
-      <Drawer
-      open={drawer}
-      onClose={()=> setDrawer(false)}
-    >
-      Drawer List
-      Drawer List
-      Drawer List
-      Drawer List
-    </Drawer>
+      <Drawer open={drawer} onClose={() => setDrawer(false)} anchor={'right'}>
+        <Card sx={{ display: "flex" }}>
+          <CardMedia
+            component="img"
+            sx={{ width: 151 }}
+            image="https://material-ui.com/static/images/cards/live-from-space.jpg"
+            alt="Live from space album cover"
+          />
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardContent sx={{ flex: "1 0 auto" }}>
+              <Typography component="div" variant="h5">
+                Live From Space
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                color="text.secondary"
+                component="div"
+              >
+                Mac Miller
+              </Typography>
+            </CardContent>
+          </Box>
+        </Card>
+      </Drawer>
     </nav>
   );
 };
