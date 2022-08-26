@@ -6,15 +6,18 @@ import {
   CardMedia,
   Drawer,
   Modal,
+  styled,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartState } from "../ContextAPI";
 import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [register, setRegister] = useState(false)
   const [drawer, setDrawer] = useState(false);
   const { count } = CartState();
 
@@ -29,6 +32,33 @@ const NavBar = () => {
     boxShadow: 24,
     p: 4,
   };
+
+  // const StyledModal = styled(Modal) ({
+  //   position: "absolute",
+  //   top: "50%",
+  //   left: "50%",
+  //   transform: "translate(-50%, -50%)",
+  //   width: 400,
+  //   bgcolor: "background.paper",
+  //   border: "2px solid #000",
+  //   boxShadow: 24,
+  //   p: 4,
+  // })
+
+  // const handleSignUp = () => {
+  //   return (
+  //     <Modal
+  //       open={open}
+  //       onClose={() => setOpen(false)}
+  //       aria-labelledby="modal-modal-title"
+  //       aria-describedby="modal-modal-description"
+  //     >
+  //       <Box sx={style}>
+  //         <SignUp />
+  //       </Box>
+  //     </Modal>
+  //   )
+  // }
 
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm">
@@ -69,7 +99,7 @@ const NavBar = () => {
             >
               <i className="fa fa-sign-in me-1"></i> Login
             </Button>
-            <Button variant="contained" color="error" className="ms-2">
+            <Button variant="contained" color="error" className="ms-2" onClick={()=> setRegister(true)}>
               <i className="fa fa-user-plus me-1"></i> Register
             </Button>
             <Button
@@ -92,7 +122,35 @@ const NavBar = () => {
           <SignIn />
         </Box>
       </Modal>
-      <Drawer open={drawer} onClose={() => setDrawer(false)} anchor={'right'}>
+
+      <Modal
+        open={register}
+        onClose={() => setRegister(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <SignUp />
+        </Box>
+      </Modal>
+      {/* Modal for the Registration */}
+      
+      <Drawer open={drawer} onClose={() => setDrawer(false)} anchor={"right"} >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: 1,   
+          }}
+        >
+          <Typography variant="h5" fontWeight={700}>
+            Total Price:{" "}
+          </Typography>
+          <Typography variant="h6" fontWeight={500} sx={{ marginLeft: "8px" }}>
+            {" "}
+            $ 52
+          </Typography>
+        </Box>
         <Card sx={{ display: "flex" }}>
           <CardMedia
             component="img"
