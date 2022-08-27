@@ -101,7 +101,7 @@ const Products = () => {
         {filter.map((product) => {
           return (
             <>
-              <Card sx={{ maxWidth: 345, margin: 5 }}>
+              <Card sx={{ maxWidth: 345, margin: 5, border: '1px solid black' }}>
                 <CardMedia
                   component="img"
                   height="400"
@@ -117,7 +117,7 @@ const Products = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button variant="contained" color="error" size="small">${product.price}</Button>
+                  <Button variant="contained" color="error" size="small" className="ms-2">${product.price}</Button>
                   <Link to={`/products/${product.id}`}><Button variant="contained" color="primary" size="small">View</Button></Link>
                 </CardActions>
               </Card>

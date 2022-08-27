@@ -1,24 +1,28 @@
+import { Box, Container, Typography } from "@mui/material";
 import React from "react";
-import background from "../assets/bground.jpg";
+import Carousel from "./Carousel";
 import Products from './Products'
 
 const Home = () => {
   return (
-    <div className="hero">
-      <div className="card bg-dark text-white border-0">
-        <img
-          src={background}
-          className="card-img"
-          alt="background_image"
-          height="550px"
-        />
-        <div className="card-img-overlay">
-          <h5 className="card-title display-3 fw-bolder mb-0">NEW ARRIVALS</h5>
-          <p className="card-text lead fs-2">
-            CHECK OUT ALL THE TRENDS
-          </p>
-        </div>
-      </div>
+    <div>
+      <Box sx={{ maxWidth: "100%", margin: "0 auto", display: "flex", justifyContent: 'center' }}>
+        <Box
+        sx={{
+            backgroundImage: "url(https://cdn.pixabay.com/photo/2013/10/29/18/20/flower-202483__340.jpg)",
+            width: "90%",
+            height: 250,
+            display: 'flex',
+            gap: 3,
+            alignItems: 'center'
+        }}
+        >
+        <Container>
+            <Typography variant="h4" sx={{ display: 'flex', justifyContent: "center"}}>Best Seller Items</Typography>
+            <Carousel />
+        </Container>
+        </Box>
+    </Box>
       <Products/>
     </div>
   );
