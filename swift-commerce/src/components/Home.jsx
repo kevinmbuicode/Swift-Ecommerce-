@@ -5,26 +5,25 @@ import Products from './Products'
 
 const Home = () => {
   return (
-    <div>
+    <Box>
       <Box sx={{ maxWidth: "100%", margin: "0 auto", display: "flex", justifyContent: 'center' }}>
         <Box
         sx={{
             backgroundImage: "url(https://cdn.pixabay.com/photo/2013/10/29/18/20/flower-202483__340.jpg)",
             width: "90%",
-            height: 250,
+            height: 350,
             display: 'flex',
             gap: 3,
             alignItems: 'center'
         }}
         >
-        <Container>
-            <Typography variant="h4" sx={{ display: 'flex', justifyContent: "center"}}>Best Seller Items</Typography>
-            <Carousel />
-        </Container>
+          <Container>
+            <Carousel/>
+          </Container>
         </Box>
     </Box>
       <Products/>
-    </div>
+    </Box>
   );
 };
 
