@@ -34,6 +34,7 @@ const Carousel = () => {
       <AliceCarousel
         mouseTracking
         infinite
+        autoPlayDirection="rtl"
         autoPlayInterval={1000}
         animationDuration={1500}
         disableDotsControls
