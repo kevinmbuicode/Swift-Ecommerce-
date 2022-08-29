@@ -17,9 +17,8 @@ const Home = () => {
             alignItems: 'center'
         }}
         >
-          <Container>
-            <Carousel/>
-          </Container>
+          <Typography variant="h4">Best seller</Typography>
+          <Carousel/>
         </Box>
     </Box>
       <Products/>
