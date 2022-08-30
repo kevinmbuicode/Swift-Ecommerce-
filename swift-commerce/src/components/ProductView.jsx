@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import React, { useState,useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useParams } from 'react-router-dom';
@@ -46,6 +47,13 @@ const Product = () => {
             <>
                 <div className='col-md-6'>
                     <img src={product.image} alt={product.title} height='400px' width='350px'/>
+                    
+                    <Box sx={{ display: "flex", gap: 4, marginTop: 4}}>
+                    <img src={product.image} alt={product.title} height='40px' width='50px'/>
+                    <img src={product.image} alt={product.title} height='40px' width='50px'/>
+                    <img src={product.image} alt={product.title} height='40px' width='50px'/>
+                    <img src={product.image} alt={product.title} height='40px' width='50px'/>
+                    </Box>
                 </div>
                 <div className='col-md-6'>
                     <h4 className='text-uppercase text-black-50'>
