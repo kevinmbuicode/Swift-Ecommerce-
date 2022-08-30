@@ -10,15 +10,15 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { CartState } from "../ContextAPI";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
+  const state = useSelector((state)=> state.handleCart);
   const [open, setOpen] = useState(false);
   const [register, setRegister] = useState(false)
   const [drawer, setDrawer] = useState(false);
-  const { count, setCount } = CartState();
 
   const style = {
     position: "absolute",
@@ -80,7 +80,7 @@ const NavBar = () => {
               onClick={() => setDrawer(true)}
               className="ms-2"
             >
-              <i className="fa fa-shopping-cart me-1"></i> Cart ({count})
+              <i className="fa fa-shopping-cart me-1"></i> Cart ({state})
             </Button>
           </div>
         </div>

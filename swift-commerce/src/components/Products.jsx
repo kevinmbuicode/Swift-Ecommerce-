@@ -49,8 +49,8 @@ const Products = () => {
 
   //filter products by name selected
   const filterProduct = (name) => {
-    const newList = data.filter((item) => item.category === name);
-    setFilter(newList);
+    const updatedList = data.filter((x) => x.category === name);
+    setFilter(updatedList);
   };
 
   const ShowProducts = () => {

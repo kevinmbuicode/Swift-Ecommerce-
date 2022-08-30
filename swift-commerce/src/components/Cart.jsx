@@ -1,19 +1,18 @@
-// import { Drawer } from "@mui/material";
-// import React, { useContext, useState } from "react";
-// import { CartState } from "../ContextAPI";
+import { Drawer } from "@mui/material";
+import React, { useState } from "react";
 
-// const Cart = () => {
-//   const [ open, setOpen] = useState();
-//   const { count, setCount} = useContext(CartState)
-//   return (
-//     <Drawer
-//       // anchor={anchor}
-//       open={open}
-//       onClose={()=> setOpen(false)}
-//     >
-//       [Array]
-//     </Drawer>
-//   );
-// };
+const Cart = () => {
+  const [ open, setOpen] = useState();
 
-// export default Cart;
+  return (
+    <Drawer
+      // anchor={anchor}
+      open={open}
+      onClose={()=> setOpen(false)}
+    >
+      [Array]
+    </Drawer>
+  );
+};
+
+export default Cart;
