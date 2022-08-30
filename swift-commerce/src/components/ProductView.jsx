@@ -54,7 +54,7 @@ const Product = () => {
                     <h1 className='display-5'>{product.title}</h1>
                     <p className='lead'>
                     
-                    {/* Check if product.rating is true(exits in the product), render the rate*/}
+                    {/* Check if product.rating is true render the rate*/}
                         Rating {product.rating && product.rating.rate}
                         <i className='fa fa-star'></i>
                     </p>
@@ -63,7 +63,7 @@ const Product = () => {
                     </h3>
                     <p className='lead'>{product.description}</p>
                     <button className='btn btn-outline-dark px-4 py-2' onClick={handleAddition}>Add to Cart</button>
-                    <Link to='/cart' className='btn btn-dark ms-2 px-3 py-2'>Go to Cart</Link>
+                    <Link to='#' className='btn btn-dark ms-2 px-3 py-2'>Go to Cart</Link>
                 </div>
             </>
         )

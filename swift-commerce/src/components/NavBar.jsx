@@ -18,7 +18,7 @@ const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [register, setRegister] = useState(false)
   const [drawer, setDrawer] = useState(false);
-  const { count } = CartState();
+  const { count, setCount } = CartState();
 
   const style = {
     position: "absolute",

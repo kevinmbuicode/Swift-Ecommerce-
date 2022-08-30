@@ -18,7 +18,7 @@ const Home = () => {
         }}
         >
           <Typography variant="h4">Best seller</Typography>
-          <Carousel/>
+          {/* <Carousel/> */}
         </Box>
     </Box>
       <Products/>
