@@ -1,7 +1,14 @@
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+} from "@mui/material";
 import { Box } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -9,7 +16,13 @@ const Cart = () => {
   const { items } = cart;
 
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
       {items.map((item) => {
         return (
           <Card sx={{ display: "flex" }}>
@@ -36,7 +49,14 @@ const Cart = () => {
           </Card>
         );
       })}
-    </>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Link to="/checkout">
+          <Button variant="contained" sx={{ width: "50%" }}>
+            CheckOut
+          </Button>
+        </Link>
+      </Box>
+    </Box>
   );
 };
 
