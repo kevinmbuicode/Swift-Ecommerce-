@@ -12,13 +12,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
-  const state = useSelector((state)=> state.handleCart);
+  const cart = useSelector((state) => state.cart);
   const [open, setOpen] = useState(false);
-  const [register, setRegister] = useState(false)
+  const [register, setRegister] = useState(false);
   const [drawer, setDrawer] = useState(false);
+
+  const { items, totalItems, totalPrice } = cart;
 
   const style = {
     position: "absolute",
@@ -31,7 +33,6 @@ const NavBar = () => {
     boxShadow: 24,
     p: 4,
   };
-
 
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm">
@@ -72,16 +73,23 @@ const NavBar = () => {
             >
               <i className="fa fa-sign-in me-1"></i> Login
             </Button>
-            <Button variant="contained" color="error" className="ms-2" onClick={()=> setRegister(true)}>
+            <Button
+              variant="contained"
+              color="error"
+              className="ms-2"
+              onClick={() => setRegister(true)}
+            >
               <i className="fa fa-user-plus me-1"></i> Register
             </Button>
-            <Button
+            <Link to="/cart"><Button
               variant="contained"
               onClick={() => setDrawer(true)}
               className="ms-2"
             >
-              <i className="fa fa-shopping-cart me-1"></i> Cart ({state})
+              <i className="fa fa-shopping-cart me-1"></i> Cart (
+              {totalItems})
             </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -107,13 +115,39 @@ const NavBar = () => {
         </Box>
       </Modal>
       {/* Modal for the Registration */}
-      
-      <Drawer open={drawer} onClose={() => setDrawer(false)} anchor={"right"} >
+
+      {/* <Drawer open={drawer} onClose={() => setDrawer(false)} anchor={"right"} sx={{ display: "flex", flexDirection: "column"}}>
+      {items.map((item)=> {
+        return (
+          <Card sx={{ display: "flex" }}>
+          <CardMedia
+            component="img"
+            sx={{ width: 151 }}
+            image={item.image}
+            alt={item.name}
+          />
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardContent sx={{ flex: "1 0 auto" }}>
+              <Typography component="div" variant="h5">
+                {item.name}
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                color="text.secondary"
+                component="div"
+              >
+                {item.price}
+              </Typography>
+            </CardContent>
+          </Box>
+        </Card>
+        )
+      })}
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            marginBottom: 1,   
+            marginBottom: 1,
           }}
         >
           <Typography variant="h5" fontWeight={700}>
@@ -121,32 +155,10 @@ const NavBar = () => {
           </Typography>
           <Typography variant="h6" fontWeight={500} sx={{ marginLeft: "8px" }}>
             {" "}
-            $ 52
+            $ {totalPrice}
           </Typography>
         </Box>
-        <Card sx={{ display: "flex" }}>
-          <CardMedia
-            component="img"
-            sx={{ width: 151 }}
-            image="https://material-ui.com/static/images/cards/live-from-space.jpg"
-            alt="Live from space album cover"
-          />
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <CardContent sx={{ flex: "1 0 auto" }}>
-              <Typography component="div" variant="h5">
-                Live From Space
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                color="text.secondary"
-                component="div"
-              >
-                Mac Miller
-              </Typography>
-            </CardContent>
-          </Box>
-        </Card>
-      </Drawer>
+      </Drawer> */}
     </nav>
   );
 };
