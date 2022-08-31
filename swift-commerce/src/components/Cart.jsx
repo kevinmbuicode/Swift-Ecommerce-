@@ -49,13 +49,13 @@ const Cart = () => {
           </Card>
         );
       })}
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Link to="/checkout">
+      <Link to="/checkout">
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Button variant="contained" sx={{ width: "50%" }}>
             CheckOut
           </Button>
-        </Link>
-      </Box>
+        </Box>
+      </Link>
     </Box>
   );
 };
